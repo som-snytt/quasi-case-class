@@ -134,7 +134,7 @@ trait QuasiDefs[U <: SymbolUniverse] {
     def CanEqualLogic(param: TermName): Tree = q"$param.isInstanceOf[$ClassType]"
     def ToStringLogic: Tree = q"""List(..$primaryNames).mkString($ClassNameString + "(", ", ", ")")"""
     def HashCodeLogic: Tree = {
-      val stats = primaryNames map (n => q"scala.runtime.Statics.mix(acc, $n)")
+      val stats = primaryNames map (n => q"acc = scala.runtime.Statics.mix(acc, $n)")
       val length: Int = primaryNames.length
       q"""{
         var acc: Int = 0xcafebabe // oops it's hardcoded

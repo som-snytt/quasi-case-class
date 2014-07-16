@@ -20,8 +20,8 @@ class Rational(val n: Int, val d: Int) extends AnyRef with Product2[Int, Int] {
   override def toString(): String = List(n, d).mkString("Rational".+("("), ", ", ")");
   override def hashCode(): Int = {
     var acc: Int = -889275714;
-    scala.runtime.Statics.mix(acc, n);
-    scala.runtime.Statics.mix(acc, d);
+    acc = scala.runtime.Statics.mix(acc, n);
+    acc = scala.runtime.Statics.mix(acc, d);
     scala.runtime.Statics.finalizeHash(acc, 2)
   };
   override def equals(that: Any): Boolean = this.eq(that.asInstanceOf[AnyRef]).||(that match {
